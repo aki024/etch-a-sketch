@@ -1,5 +1,6 @@
 const fContainer = document.querySelector('.flex-container');
 const restartButton = document.querySelector('#restart');
+const gridButton = document.querySelector('#displayGrid');
 
 
 
@@ -26,6 +27,7 @@ function fillContainer(n = 16) {
     }
     restartHover();
 
+
 }
 /*starting grid*/
 fillContainer();
@@ -36,7 +38,7 @@ function hoverTry() {
     const squares = document.querySelectorAll('.flex-item');
     squares.forEach((div) => {
         div.addEventListener('mouseover', () => {
-            const rowSelector = document.querySelectorAll('.flex-row');
+
             div.classList.add('hover');
         })
     })
@@ -49,10 +51,23 @@ function restartHover() {
         div.addEventListener('mouseover', hoverTry);
     }));
 }
+/*Display grid function */
+function displayGrid() {
+    const squares = document.querySelectorAll('.flex-item');
+    squares.forEach((div) => {
+
+        div.classList.toggle('grid');
+
+    })
+}
 
 
 /*Restart button functionality */
 restartButton.addEventListener('click', restartGrid);
+gridButton.addEventListener('click', displayGrid);
+
+
+
 
 
 /*Removes the current grid */
@@ -72,4 +87,5 @@ function restartGrid() {
     /*filling the grid with new size */
     clearGrid(fContainer);
     fillContainer(gridSize);
+
 }
